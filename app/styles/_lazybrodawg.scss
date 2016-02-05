@@ -1,0 +1,62 @@
+$transition-duration: .2s;
+$transition-easing: ease-out;
+$bg-color: #999;
+
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+//toss away css
+body {
+  padding: 20px;
+  background-color: #e3e3e3;
+}
+
+[lazy-brodawg] {
+  display: block;
+  float: left;
+  width: 328px;
+  margin: 12px;
+}
+
+#lazy-brodawg-imgs {
+  width: 720px;
+  max-width: 100%;
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+//
+
+[lazy-brodawg] {
+  position: relative;
+  overflow: hidden;
+  @extend %lazy-brodawg-ph;
+
+  img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    max-width: 100%;
+    filter: blur(20px);
+    background-color: $bg-color;
+    transition: opacity $transition-duration $transition-easing, filter $transition-duration $transition-easing;
+  }
+
+  &.original-loaded {
+
+    img {
+      opacity: 1;
+      filter: blur(0px);
+      background-color: transparent;
+    }
+  }
+}
