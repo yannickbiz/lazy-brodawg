@@ -32,7 +32,7 @@ var LazyBrodawg = (function() {
     var ratio;
 
     for (let i = 0; i < loaders.length; i++) {
-      ratio = (loaders[i].lazyBrodawg.height / loaders[i].lazyBrodawg.width * loaders[i].clientWidth);
+      ratio = (loaders[i].lazyBrodawg.sizes[_getImgSize()].ratio * loaders[i].clientWidth);
       loaders[i].style.paddingBottom = ratio + 'px';
     }
   };
@@ -53,7 +53,7 @@ var LazyBrodawg = (function() {
       var ph = loaders[index].querySelector('noscript');
 
       var img = new Image();
-      img.src = loaders[index].lazyBrodawg.sizes[_getImgSize()];
+      img.src = loaders[index].lazyBrodawg.sizes[_getImgSize()].src;
       img.alt = loaders[index].lazyBrodawg.alt;
       img.onload = () => {
         loaders[index].appendChild(img);
