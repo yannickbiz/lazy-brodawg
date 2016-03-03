@@ -32,13 +32,13 @@ var LazyBrodawg = (function() {
     var ratio;
 
     for (let i = 0; i < loaders.length; i++) {
-      ratio = (loaders[i].lazyBrodawg.sizes[_getImgSize()].ratio * loaders[i].clientWidth);
-      loaders[i].style.paddingBottom = ratio + 'px';
+      ratio = (loaders[i].lazyBrodawg.sizes[_getImgSize()].ratio * 100);
+      loaders[i].style.paddingBottom = ratio + '%';
     }
   };
 
   var _getImgSize = () => {
-    var deviceWidth = window.innerWidth * window.devicePixelRatio;
+    var deviceWidth = window.innerWidth;
 
     if (deviceWidth >= 1200) {
       return 'lg';
