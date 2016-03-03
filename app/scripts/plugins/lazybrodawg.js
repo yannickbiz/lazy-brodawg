@@ -4,8 +4,7 @@ var LazyBrodawg = (function() {
   var lazyLoaders;
   var options = {};
   var defaults = {
-    onScroll: true,
-    imgsPath: ''
+    onScroll: true // coming soon
   };
 
   var _setOptions = config => {
@@ -33,7 +32,7 @@ var LazyBrodawg = (function() {
     var ratio;
 
     for (let i = 0; i < loaders.length; i++) {
-      ratio = loaders[i].lazyBrodawg.sizes[_getImgSize()].ratio * 100;
+      ratio = (loaders[i].lazyBrodawg.sizes[_getImgSize()].ratio * 100);
       loaders[i].style.paddingBottom = ratio + '%';
     }
   };
@@ -54,13 +53,13 @@ var LazyBrodawg = (function() {
       var ph = loaders[index].querySelector('noscript');
 
       var img = new Image();
-      img.src = options.imgsPath + loaders[index].lazyBrodawg.sizes[_getImgSize()];
+      img.src = loaders[index].lazyBrodawg.sizes[_getImgSize()].src;
+      img.alt = loaders[index].lazyBrodawg.alt;
       img.onload = () => {
         loaders[index].appendChild(img);
         setTimeout(() => {
           loaders[index].classList.add('original-loaded');
           loaders[index].removeChild(ph);
-          console.log(img.src);
         }, 0);
       };
     };
