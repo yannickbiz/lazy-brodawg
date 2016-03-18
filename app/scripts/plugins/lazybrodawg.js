@@ -29,11 +29,13 @@ var LazyBrodawg = (function() {
   };
 
   var _setPlaceholders = loaders => {
-    var ratio;
+    var ratio,
+        lazyPlaceholders;
 
     for (let i = 0; i < loaders.length; i++) {
       ratio = (loaders[i].lazyBrodawg.sizes[_getImgSize()].ratio * 100);
-      loaders[i].style.paddingBottom = ratio + '%';
+      lazyPlaceholders = loaders[i].querySelector('div')
+      lazyPlaceholders.style.paddingBottom = ratio + '%';
     }
   };
 
