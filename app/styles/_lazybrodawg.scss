@@ -1,7 +1,39 @@
+// Lazybrodawg
+
 $transition-duration: .2s;
 $transition-easing: ease-out;
 $bg-color: #999;
 
+[lazy-brodawg] {
+  @extend %lazy-brodawg-ph;
+  position: relative;
+  overflow: hidden;
+  // background-color: $bg-color;
+
+  img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    max-width: 100%;
+    filter: blur(20px);
+    background-color: $bg-color;
+    transition: opacity $transition-duration $transition-easing, filter $transition-duration $transition-easing;
+  }
+
+  &.original-loaded {
+    background-color: transparent;
+
+    img {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+}
+
+// Demo
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
   margin: 0;
@@ -29,34 +61,5 @@ body {
     content: '';
     display: table;
     clear: both;
-  }
-}
-//
-
-[lazy-brodawg] {
-  position: relative;
-  overflow: hidden;
-  @extend %lazy-brodawg-ph;
-
-  img {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    max-width: 100%;
-    filter: blur(20px);
-    background-color: $bg-color;
-    transition: opacity $transition-duration $transition-easing, filter $transition-duration $transition-easing;
-  }
-
-  &.original-loaded {
-
-    img {
-      opacity: 1;
-      filter: blur(0px);
-      background-color: transparent;
-    }
   }
 }
