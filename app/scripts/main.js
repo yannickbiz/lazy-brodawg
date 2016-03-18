@@ -79,6 +79,6 @@
 
   // Your custom JavaScript goes here
   document.addEventListener('DOMContentLoaded', () => {
-    LazyBrodawg.init({});
+    LazyLoader.init({});
   });
 })();
