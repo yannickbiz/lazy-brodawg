@@ -1,10 +1,12 @@
-var LazyBrodawg = (function() {
+var LazyLoader = (function() {
   'use strict';
 
   var lazyLoaders;
   var options = {};
   var defaults = {
-    onScroll: true // coming soon
+    att: 'lazy-loader',
+    loadedClass: 'original-loaded',
+    onScroll: false
   };
 
   var _setOptions = config => {
@@ -19,23 +21,12 @@ var LazyBrodawg = (function() {
   };
 
   var _getElements = () => {
-    lazyLoaders = document.querySelectorAll('[lazy-brodawg]');
+    lazyLoaders = document.querySelectorAll(`[${options.att}]`);
   };
 
   var _getInlineAttributes = loaders => {
     for (let i = 0; i < loaders.length; i++) {
-      loaders[i].lazyBrodawg = JSON.parse(loaders[i].getAttribute('lazy-brodawg'));
-    }
-  };
-
-  var _setPlaceholders = loaders => {
-    var ratio,
-        lazyPlaceholders;
-
-    for (let i = 0; i < loaders.length; i++) {
-      ratio = (loaders[i].lazyBrodawg.sizes[_getImgSize()].ratio * 100);
-      lazyPlaceholders = loaders[i].querySelector('div')
-      lazyPlaceholders.style.paddingBottom = ratio + '%';
+      loaders[i].lazyLoader = JSON.parse(loaders[i].getAttribute(`${options.att}`));
     }
   };
 
@@ -50,18 +41,29 @@ var LazyBrodawg = (function() {
     return 'sm';
   };
 
+  var _setPlaceholders = loaders => {
+    var ratio;
+    var placeholder;
+
+    for (let i = 0; i < loaders.length; i++) {
+      ratio = (loaders[i].lazyLoader.sizes[_getImgSize()].ratio * 100);
+      placeholder = loaders[i].querySelector('div');
+      placeholder.style.paddingBottom = ratio + '%';
+    }
+  };
+
   var _makeImgs = loaders => {
     var _makeImg = index => {
-      var ph = loaders[index].querySelector('noscript');
+      var noscript = loaders[index].querySelector('noscript');
 
       var img = new Image();
-      img.src = loaders[index].lazyBrodawg.sizes[_getImgSize()].src;
-      img.alt = loaders[index].lazyBrodawg.alt;
+      img.src = loaders[index].lazyLoader.sizes[_getImgSize()].src;
+      img.alt = loaders[index].lazyLoader.alt;
       img.onload = () => {
         loaders[index].appendChild(img);
         setTimeout(() => {
-          loaders[index].classList.add('original-loaded');
-          loaders[index].removeChild(ph);
+          loaders[index].classList.add(options.loadedClass);
+          loaders[index].removeChild(noscript);
         }, 0);
       };
     };
@@ -77,7 +79,6 @@ var LazyBrodawg = (function() {
     _getInlineAttributes(lazyLoaders);
     _setPlaceholders(lazyLoaders);
     _makeImgs(lazyLoaders);
-    console.log('init');
   };
 
   return {

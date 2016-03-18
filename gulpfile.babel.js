@@ -115,7 +115,7 @@ gulp.task('scripts', () =>
       // Note: Since we are not using useref in the scripts build pipeline,
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
-      './app/scripts/plugins/lazybrodawg.js',
+      './app/scripts/plugins/lazy-loader.js',
       './app/scripts/main.js'
       // Other scripts
     ])
