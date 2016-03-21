@@ -1,6 +1,6 @@
-# Lazy loader
+# Lazy Loader
 
-Lazy loader is a lightweight plugin that delays the loading of images. The main goal is to provide better performance and perception for the user and also deliver the good asset depending on the web context.
+Lazy Loader is a lightweight plugin that delays the loading of images. The main goal is to provide better performance and perception for the user and also deliver the good asset depending on the web context.
 
 Using lazy loading makes the page load faster for a better user experience.
 
@@ -43,7 +43,7 @@ Run the script on DOM Content loaded:
 You can also configured the placeholder via `scss`. You only need to change the variable `$bg-color` on your build or extend a base64 placeholder `%placeholder`.
 
 ### Breakpoints
-Lazy loader is using three default breakpoints `sm:<640`, `md:>=640` and `lg:>=1200`.
+Lazy Loader is using three default breakpoints `sm:<640`, `md:>=640` and `lg:>=1200`.
 
 ### Ratio
 The ratio is calculated with a simple formula of `height/width`.
@@ -56,7 +56,7 @@ Compatible with All Browsers and IE9+.
 Atom
 ```
 '.text.html.basic':
-  'Lazy loader':
+  'Lazy Loader':
     'prefix': 'll'
     'body': """
       <div lazy-loader='{
@@ -95,4 +95,4 @@ Sublime
 [Globalia](http://www.globalia.ca/fr/) Front end team.
 
 ### License
-Lazy loader is licensed under the [MIT license](https://opensource.org/licenses/MIT)
+Lazy Loader is licensed under the [MIT license](https://opensource.org/licenses/MIT)
