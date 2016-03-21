@@ -51,6 +51,42 @@ The ratio is calculated with a simple formula of `height/width`.
 ### Browser support
 Compatible with All Browsers and IE9+.
 
+### Snippets
+
+Atom
+```
+'.text.html.basic':
+  'Lazy loader':
+    'prefix': 'll'
+    'body': """
+      <div lazy-loader='{
+          "alt": "Lazy Loader",
+          "sizes": {
+            "sm": {
+              "src": "../images/",
+              "ratio": "(width/height)"
+            },
+            "md": {
+              "src": "../images/",
+              "ratio": "(width/height)"
+            },
+            "lg": {
+              "src": "../images/galaxy.jpg",
+              "ratio": "0.545"
+            }
+          }
+        }'>
+        <div></div>
+        <noscript><img src="../images/$1"></noscript>
+      </div>
+    """
+```
+
+Sublime
+```json
+# Coming soon!
+```
+
 ### Coming soon
 - Custom breakpoints
 - On scroll option
