@@ -1,13 +1,15 @@
 # Lazy loader
 
-Lazy loader is a light weight plugin that delays the loading of images. It's also providing the good source and ratio depending on the context.
+Lazy loader is a lightweight plugin that delays the loading of images. The main goal is to provide better performance and perception for the user and also deliver the good asset depending on the web context.
 
 Using lazy loading makes the page load faster for a better user experience.
 
 ### Installation
 ...
 
-### Markup
+### Usage
+Include the path and ratio of your image. For users without javascript enabled, wrap the original image inside a `<noscript>` tag. The div is required to apply the ratio placeholder.
+
 ```html
   <div lazy-loader='{
     "alt": "Lazy Loader",
@@ -31,12 +33,14 @@ Using lazy loading makes the page load faster for a better user experience.
   </div>
 ```
 
-### Init
+Run the script on DOM Content loaded:
 ```javascript
   document.addEventListener('DOMContentLoaded', () => {
     LazyLoader.init({});
   });
 ```
+
+You can also configured the placeholder via `scss`. You only need to change the variable `$bg-color` on your build or extend a base64 placeholder `%placeholder`.
 
 ### Breakpoints
 Lazy loader is using three default breakpoints `sm:<640`, `md:>=640` and `lg:>=1200`.
@@ -44,9 +48,15 @@ Lazy loader is using three default breakpoints `sm:<640`, `md:>=640` and `lg:>=1
 ### Ratio
 The ratio is calculated with a simple formula of `height/width`.
 
-### In the next version...
+### Browser support
+Compatible with All Browsers and IE9+.
+
+### Coming soon
 - Custom breakpoints
 - On scroll option
 
+### Contributors
+[Globalia](http://www.globalia.ca/fr/) Front end team.
+
 ### License
-MIT
+Lazy loader is licensed under the [MIT license](https://opensource.org/licenses/MIT)
