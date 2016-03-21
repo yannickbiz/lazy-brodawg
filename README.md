@@ -40,8 +40,6 @@ Run the script on DOM Content loaded:
   });
 ```
 
-You can also configured the placeholder via `scss`. You only need to change the variable `$bg-color` on your build or extend a base64 placeholder `%placeholder`.
-
 ### Breakpoints
 Lazy Loader is using three default breakpoints `sm:<640`, `md:>=640` and `lg:>=1200`.
 
@@ -64,11 +62,11 @@ Atom
           "sizes": {
             "sm": {
               "src": "../images/",
-              "ratio": "(width/height)"
+              "ratio": "(height/width)"
             },
             "md": {
               "src": "../images/",
-              "ratio": "(width/height)"
+              "ratio": "(height/width)"
             },
             "lg": {
               "src": "../images/galaxy.jpg",
